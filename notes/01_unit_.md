@@ -5,8 +5,8 @@
 2. Variables and Data Types
 3. Type Conversion
 4. Input and Output Functions
-5. Conditional Statements
-6. Logical Operators
+5. Python Operators
+6. Conditional Statements
 7. for Loop
 8. while Loop
 9. Nested Loops
@@ -362,7 +362,444 @@ print(values)   # [10, 20, 30]
 
 ---
 
-## 5. Conditional Statements
+## 5. Python Operators
+
+Operators are special symbols in Python that perform operations on values (called operands). Operators are the building blocks used inside expressions and conditions, so it is important to understand them before moving on to conditional statements and loops.
+
+Python organizes operators into the following categories:
+
+1. Arithmetic Operators
+2. Assignment Operators
+3. Comparison (Relational) Operators
+4. Logical Operators
+5. Identity Operators
+6. Membership Operators
+7. Bitwise Operators
+
+### 5.1 Arithmetic Operators
+
+Arithmetic operators are used to perform mathematical calculations such as addition, subtraction, multiplication, and division.
+
+| Operator | Name | Description | Example | Result |
+|---|---|---|---|---|
+| `+` | Addition | Adds two operands | `5 + 3` | `8` |
+| `-` | Subtraction | Subtracts right operand from left | `5 - 3` | `2` |
+| `*` | Multiplication | Multiplies two operands | `5 * 3` | `15` |
+| `/` | Division | Divides left operand by right, always returns a float | `5 / 2` | `2.5` |
+| `//` | Floor Division | Divides and rounds down to the nearest whole number | `5 // 2` | `2` |
+| `%` | Modulus | Returns the remainder of division | `5 % 2` | `1` |
+| `**` | Exponentiation | Raises left operand to the power of right operand | `5 ** 2` | `25` |
+
+**Examples:**
+
+```python
+a = 10
+b = 3
+
+print(a + b)    # 13
+print(a - b)    # 7
+print(a * b)    # 30
+print(a / b)    # 3.3333333333333335
+print(a // b)   # 3
+print(a % b)    # 1
+print(a ** b)   # 1000
+```
+
+```python
+# Checking even or odd using modulus
+num = 7
+if num % 2 == 0:
+    print("Even")
+else:
+    print("Odd")
+```
+
+**Commonly Confused: `/` vs `//`**
+
+- `/` is **true division** — it always returns a `float`, even if the numbers divide evenly.
+- `//` is **floor division** — it divides and then rounds the result **down** to the nearest whole number (towards negative infinity), returning an `int` when both operands are `int`.
+
+```python
+print(7 / 2)     # 3.5   (true division, float result)
+print(7 // 2)    # 3     (floor division, whole number result)
+print(-7 // 2)   # -4    (rounds down, not towards zero)
+```
+
+### 5.2 Assignment Operators
+
+Assignment operators are used to assign values to variables. Python also provides shorthand assignment operators that combine an arithmetic operation with assignment.
+
+| Operator | Name | Description | Example | Equivalent To |
+|---|---|---|---|---|
+| `=` | Assign | Assigns value on the right to variable on the left | `a = 5` | `a = 5` |
+| `+=` | Add and Assign | Adds and reassigns | `a += 3` | `a = a + 3` |
+| `-=` | Subtract and Assign | Subtracts and reassigns | `a -= 3` | `a = a - 3` |
+| `*=` | Multiply and Assign | Multiplies and reassigns | `a *= 3` | `a = a * 3` |
+| `/=` | Divide and Assign | Divides and reassigns | `a /= 3` | `a = a / 3` |
+| `//=` | Floor Divide and Assign | Floor divides and reassigns | `a //= 3` | `a = a // 3` |
+| `%=` | Modulus and Assign | Takes modulus and reassigns | `a %= 3` | `a = a % 3` |
+| `**=` | Exponent and Assign | Raises to power and reassigns | `a **= 3` | `a = a ** 3` |
+
+**Examples:**
+
+```python
+a = 10
+a += 5      # a = a + 5
+print(a)    # 15
+
+b = 20
+b -= 8
+print(b)    # 12
+
+c = 4
+c **= 2
+print(c)    # 16
+```
+
+**Commonly Confused: `=` vs `==`**
+
+- `=` is the **assignment operator**. It stores a value in a variable and does **not** compare anything.
+- `==` is the **comparison operator**. It checks whether two values are equal and returns `True` or `False`.
+
+```python
+x = 5        # assigns 5 to x
+print(x == 5)   # True, compares x with 5
+
+if x = 5:        # SyntaxError: invalid syntax, cannot use = inside a condition
+    pass
+```
+
+A very common beginner mistake is writing `if x = 5:` instead of `if x == 5:`. Python does not allow assignment inside a condition, so this raises a `SyntaxError`.
+
+### 5.3 Comparison (Relational) Operators
+
+Comparison operators compare two values and always return a Boolean result: `True` or `False`. They are heavily used inside `if` conditions and loops.
+
+| Operator | Name | Description | Example | Result |
+|---|---|---|---|---|
+| `==` | Equal to | True if both values are equal | `5 == 5` | `True` |
+| `!=` | Not equal to | True if values are not equal | `5 != 3` | `True` |
+| `>` | Greater than | True if left is greater than right | `5 > 3` | `True` |
+| `<` | Less than | True if left is less than right | `5 < 3` | `False` |
+| `>=` | Greater than or equal to | True if left is greater than or equal to right | `5 >= 5` | `True` |
+| `<=` | Less than or equal to | True if left is less than or equal to right | `5 <= 3` | `False` |
+
+**Examples:**
+
+```python
+a = 10
+b = 20
+
+print(a == b)   # False
+print(a != b)   # True
+print(a < b)    # True
+print(a >= 10)  # True
+```
+
+```python
+marks = 40
+print(marks >= 33)   # True, used commonly for pass/fail checks
+```
+
+Comparison operators are used extensively with conditional statements, covered in the next section.
+
+### 5.4 Logical Operators
+
+Logical operators are used to combine multiple conditions into a single Boolean result.
+
+| Operator | Name | Description | Example |
+|---|---|---|---|
+| `and` | Logical AND | True only if both conditions are true | `a > 5 and b < 10` |
+| `or` | Logical OR | True if at least one condition is true | `a > 5 or b < 10` |
+| `not` | Logical NOT | Reverses the Boolean result | `not(a > 5)` |
+
+**Examples:**
+
+```python
+age = 25
+has_id = True
+
+if age >= 18 and has_id:
+    print("Allowed to enter")
+else:
+    print("Not allowed")
+```
+
+```python
+is_weekend = False
+is_holiday = True
+
+if is_weekend or is_holiday:
+    print("No work today")
+else:
+    print("Work day")
+```
+
+```python
+is_raining = False
+
+if not is_raining:
+    print("You can go for a walk")
+```
+
+**Truth Table Reference:**
+
+| A | B | A and B | A or B | not A |
+|---|---|---|---|---|
+| True | True | True | True | False |
+| True | False | False | True | False |
+| False | True | False | True | True |
+| False | False | False | False | True |
+
+**Combined Example:**
+
+```python
+username = "admin"
+password = "1234"
+
+if username == "admin" and password == "1234":
+    print("Login successful")
+else:
+    print("Invalid credentials")
+```
+
+**Commonly Confused: `and` vs `or`**
+
+- `and` requires **both** conditions to be `True` for the overall result to be `True`. If even one condition is `False`, the result is `False`.
+- `or` requires **at least one** condition to be `True` for the overall result to be `True`. It is only `False` when both conditions are `False`.
+
+```python
+age = 16
+has_permission = True
+
+print(age >= 18 and has_permission)   # False, age condition fails
+print(age >= 18 or has_permission)    # True, second condition is enough
+```
+
+### 5.5 Identity Operators
+
+Identity operators check whether two variables point to the **same object in memory**, not just whether their values are equal.
+
+| Operator | Name | Description | Example |
+|---|---|---|---|
+| `is` | Identity | True if both variables refer to the same object | `a is b` |
+| `is not` | Negative Identity | True if both variables do not refer to the same object | `a is not b` |
+
+**Examples:**
+
+```python
+a = [1, 2, 3]
+b = [1, 2, 3]
+c = a
+
+print(a == b)    # True, values are equal
+print(a is b)    # False, different objects in memory
+print(a is c)    # True, c refers to the same object as a
+```
+
+```python
+x = None
+if x is None:
+    print("x has no value")
+```
+
+```python
+p = 5
+q = 5
+print(p is q)   # True, small integers are cached by Python
+```
+
+**Commonly Confused: `==` vs `is`**
+
+- `==` compares the **values** of two objects.
+- `is` compares the **identity** (memory location) of two objects.
+
+Two variables can hold equal values but be stored as separate objects in memory. It is best practice to use `is` only when comparing to `None`, `True`, or `False`, and use `==` for comparing values.
+
+```python
+list1 = [1, 2, 3]
+list2 = [1, 2, 3]
+
+print(list1 == list2)   # True, same values
+print(list1 is list2)   # False, different objects
+```
+
+### 5.6 Membership Operators
+
+Membership operators check whether a value exists within a sequence such as a string, list, or tuple.
+
+| Operator | Name | Description | Example |
+|---|---|---|---|
+| `in` | Membership | True if the value is found in the sequence | `'a' in 'apple'` |
+| `not in` | Negative Membership | True if the value is not found in the sequence | `'z' not in 'apple'` |
+
+**Examples:**
+
+```python
+fruits = ["apple", "banana", "cherry"]
+
+print("banana" in fruits)       # True
+print("mango" in fruits)        # False
+print("mango" not in fruits)    # True
+```
+
+```python
+sentence = "Python is fun"
+print("fun" in sentence)        # True
+print("Java" in sentence)       # False
+```
+
+```python
+# Common use inside a condition
+name = "Ravi"
+if "R" in name:
+    print("Name contains the letter R")
+```
+
+**Commonly Confused: `in` vs `not in`**
+
+- `in` returns `True` if the value **is present** in the sequence.
+- `not in` returns `True` if the value **is absent** from the sequence.
+
+They are exact opposites of each other for the same check, and both are commonly used to validate whether user input or data exists in a collection before processing it further.
+
+### 5.7 Bitwise Operators
+
+Bitwise operators work directly on the binary (bit-level) representation of integers. They are less commonly used by beginners but are important for low-level operations, flags, and optimization.
+
+| Operator | Name | Description | Example | Result |
+|---|---|---|---|---|
+| `&` | Bitwise AND | Sets each bit to 1 if both bits are 1 | `5 & 3` | `1` |
+| `\|` | Bitwise OR | Sets each bit to 1 if at least one bit is 1 | `5 \| 3` | `7` |
+| `^` | Bitwise XOR | Sets each bit to 1 if only one of the bits is 1 | `5 ^ 3` | `6` |
+| `~` | Bitwise NOT | Inverts all the bits | `~5` | `-6` |
+| `<<` | Left Shift | Shifts bits to the left, filling with zeros | `5 << 1` | `10` |
+| `>>` | Right Shift | Shifts bits to the right | `5 >> 1` | `2` |
+
+**Examples:**
+
+```python
+a = 5    # binary: 0101
+b = 3    # binary: 0011
+
+print(a & b)    # 1  (0001)
+print(a | b)    # 7  (0111)
+print(a ^ b)    # 6  (0110)
+print(~a)       # -6
+print(a << 1)   # 10 (1010)
+print(a >> 1)   # 2  (0010)
+```
+
+```python
+# Checking if a number is even using bitwise AND
+num = 8
+if num & 1 == 0:
+    print("Even")
+else:
+    print("Odd")
+```
+
+Bitwise operators work on the binary form of numbers, unlike arithmetic operators, which work directly on the decimal values.
+
+---
+
+### Practice Questions: Python Operators
+
+**Arithmetic Operators**
+
+1. What will `print(15 / 4)` output?
+2. What will `print(15 // 4)` output?
+3. Identify the operator used in the expression `10 % 3` and state what it returns.
+4. Find the result of `2 ** 5`.
+5. Write a program that takes two numbers as input and prints their sum, difference, product, and quotient.
+
+**Assignment Operators**
+
+1. What is the value of `x` after the following code runs?
+   ```python
+   x = 10
+   x += 5
+   x *= 2
+   ```
+2. Rewrite `a = a - 4` using a shorthand assignment operator.
+3. What is the output of the following code?
+   ```python
+   y = 20
+   y //= 3
+   print(y)
+   ```
+4. Identify the operator used in `count **= 2` and explain what it does.
+5. Write a program that starts with a variable `total = 0` and uses `+=` inside a loop to add numbers from 1 to 5.
+
+**Comparison Operators**
+
+1. What will `print(10 != 10)` output?
+2. Find the result of `7 <= 7`.
+3. Identify the operator that checks whether two values are NOT equal.
+4. What is the output of the following code?
+   ```python
+   a = 5
+   b = 8
+   print(a > b)
+   ```
+5. Write a program that checks whether a user-entered number is greater than, less than, or equal to 100.
+
+**Logical Operators**
+
+1. What will `print(True and False)` output?
+2. Find the result of `(5 > 2) or (3 > 10)`.
+3. Identify the operator that reverses a Boolean value.
+4. What is the output of the following code?
+   ```python
+   age = 20
+   has_license = False
+   print(age >= 18 and has_license)
+   ```
+5. Write a program that checks if a number is between 10 and 50 (inclusive) using logical operators.
+
+**Identity Operators**
+
+1. What is the difference between `==` and `is`? Explain in one or two lines.
+2. What will the following code print?
+   ```python
+   a = [1, 2]
+   b = [1, 2]
+   print(a is b)
+   ```
+3. Identify the operator that checks whether two variables refer to the same object in memory.
+4. What is the output of the following code?
+   ```python
+   x = None
+   print(x is None)
+   ```
+5. Write a short program using `is` to check whether a variable is `None`.
+
+**Membership Operators**
+
+1. What will `print("e" in "hello")` output?
+2. Find the result of `10 not in [1, 2, 3, 4, 5]`.
+3. Identify the operator used to check whether a value is absent from a list.
+4. What is the output of the following code?
+   ```python
+   colors = ["red", "green", "blue"]
+   print("yellow" in colors)
+   ```
+5. Write a program that checks whether a user-entered fruit name exists in a given list of fruits.
+
+**Bitwise Operators**
+
+1. What will `print(6 & 3)` output?
+2. Find the result of `6 | 3`.
+3. Identify the operator used to invert all bits of a number.
+4. What is the output of the following code?
+   ```python
+   print(4 << 2)
+   ```
+5. Write a program that uses the bitwise AND operator (`& 1`) to check whether a number is even or odd.
+
+---
+
+## 6. Conditional Statements
 
 Conditional statements allow a program to execute different blocks of code based on whether a condition is `True` or `False`.
 
@@ -419,16 +856,7 @@ else:
     print("Non-positive number")
 ```
 
-### Comparison Operators (used in conditions)
-
-| Operator | Meaning | Example |
-|---|---|---|
-| `==` | Equal to | `a == b` |
-| `!=` | Not equal to | `a != b` |
-| `>` | Greater than | `a > b` |
-| `<` | Less than | `a < b` |
-| `>=` | Greater than or equal to | `a >= b` |
-| `<=` | Less than or equal to | `a <= b` |
+Conditions in `if` statements are commonly built using comparison and logical operators, covered in the Python Operators section above (Section 5).
 
 ### Short-Hand `if` (Ternary-like)
 
@@ -437,74 +865,6 @@ a = 10
 b = 20
 max_value = a if a > b else b
 print(max_value)   # 20
-```
-
----
-
-## 6. Logical Operators
-
-Logical operators are used to combine multiple conditions.
-
-| Operator | Description | Example |
-|---|---|---|
-| `and` | True if both conditions are true | `a > 5 and b < 10` |
-| `or` | True if at least one condition is true | `a > 5 or b < 10` |
-| `not` | Reverses the result | `not(a > 5)` |
-
-### Examples
-
-**`and` operator:**
-
-```python
-age = 25
-has_id = True
-
-if age >= 18 and has_id:
-    print("Allowed to enter")
-else:
-    print("Not allowed")
-```
-
-**`or` operator:**
-
-```python
-is_weekend = False
-is_holiday = True
-
-if is_weekend or is_holiday:
-    print("No work today")
-else:
-    print("Work day")
-```
-
-**`not` operator:**
-
-```python
-is_raining = False
-
-if not is_raining:
-    print("You can go for a walk")
-```
-
-### Truth Table Reference
-
-| A | B | A and B | A or B | not A |
-|---|---|---|---|---|
-| True | True | True | True | False |
-| True | False | False | True | False |
-| False | True | False | True | True |
-| False | False | False | False | True |
-
-### Combined Example
-
-```python
-username = "admin"
-password = "1234"
-
-if username == "admin" and password == "1234":
-    print("Login successful")
-else:
-    print("Invalid credentials")
 ```
 
 ---
@@ -885,7 +1245,8 @@ for i in range(10, 0, -2):
 - Variables do not require explicit type declaration; data types include `int`, `float`, `complex`, `str`, `bool`, and `None`, among others.
 - Type conversion can be implicit (automatic) or explicit (using functions like `int()`, `float()`, `str()`).
 - `input()` always returns a string and must be converted for numeric operations; `print()` displays output with configurable `sep` and `end` parameters.
-- Conditional statements (`if`, `elif`, `else`) control program flow based on conditions, and logical operators (`and`, `or`, `not`) combine multiple conditions.
+- Python operators are grouped into seven categories: arithmetic, assignment, comparison, logical, identity, membership, and bitwise, each used for a different kind of operation on values.
+- Conditional statements (`if`, `elif`, `else`) control program flow based on conditions built using comparison and logical operators.
 - `for` loops iterate over sequences; `while` loops repeat based on a condition; nested loops place one loop inside another.
 - `break` exits a loop entirely, while `continue` skips to the next iteration.
 - `range()` generates a sequence of numbers commonly used for controlling loop iterations.
