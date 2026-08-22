@@ -406,12 +406,10 @@ print(a ** b)   # 1000
 ```
 
 ```python
-# Checking even or odd using modulus
+# Using modulus to find the remainder
 num = 7
-if num % 2 == 0:
-    print("Even")
-else:
-    print("Odd")
+remainder = num % 2
+print(remainder)   # 1, since 7 is not divisible by 2 evenly
 ```
 
 **Commonly Confused: `/` vs `//`**
@@ -462,18 +460,15 @@ print(c)    # 16
 - `==` is the **comparison operator**. It checks whether two values are equal and returns `True` or `False`.
 
 ```python
-x = 5        # assigns 5 to x
+x = 5           # assigns 5 to x
 print(x == 5)   # True, compares x with 5
-
-if x = 5:        # SyntaxError: invalid syntax, cannot use = inside a condition
-    pass
 ```
 
-A very common beginner mistake is writing `if x = 5:` instead of `if x == 5:`. Python does not allow assignment inside a condition, so this raises a `SyntaxError`.
+A very common beginner mistake (which you will see once `if` statements are introduced in the next section) is accidentally writing `x = 5` instead of `x == 5` inside a condition. Python does not allow a plain assignment inside a condition, so doing this raises a `SyntaxError`. Always remember: one `=` **stores** a value, two `==` **compare** values.
 
 ### 5.3 Comparison (Relational) Operators
 
-Comparison operators compare two values and always return a Boolean result: `True` or `False`. They are heavily used inside `if` conditions and loops.
+Comparison operators compare two values and always return a Boolean result: `True` or `False`. They will become especially useful once you start writing `if` conditions in the next section.
 
 | Operator | Name | Description | Example | Result |
 |---|---|---|---|---|
@@ -519,27 +514,20 @@ Logical operators are used to combine multiple conditions into a single Boolean 
 age = 25
 has_id = True
 
-if age >= 18 and has_id:
-    print("Allowed to enter")
-else:
-    print("Not allowed")
+print(age >= 18 and has_id)   # True, both conditions are true
 ```
 
 ```python
 is_weekend = False
 is_holiday = True
 
-if is_weekend or is_holiday:
-    print("No work today")
-else:
-    print("Work day")
+print(is_weekend or is_holiday)   # True, at least one condition is true
 ```
 
 ```python
 is_raining = False
 
-if not is_raining:
-    print("You can go for a walk")
+print(not is_raining)   # True, reverses False to True
 ```
 
 **Truth Table Reference:**
@@ -557,10 +545,8 @@ if not is_raining:
 username = "admin"
 password = "1234"
 
-if username == "admin" and password == "1234":
-    print("Login successful")
-else:
-    print("Invalid credentials")
+login_ok = (username == "admin") and (password == "1234")
+print(login_ok)   # True, both conditions are correct
 ```
 
 **Commonly Confused: `and` vs `or`**
@@ -588,19 +574,18 @@ Identity operators check whether two variables point to the **same object in mem
 **Examples:**
 
 ```python
-a = [1, 2, 3]
-b = [1, 2, 3]
-c = a
+p = 5
+q = 5
+r = p
 
-print(a == b)    # True, values are equal
-print(a is b)    # False, different objects in memory
-print(a is c)    # True, c refers to the same object as a
+print(p == q)   # True, values are equal
+print(p is r)   # True, r refers to the same integer object as p
 ```
 
 ```python
 x = None
-if x is None:
-    print("x has no value")
+print(x is None)        # True
+print(x is not None)    # False
 ```
 
 ```python
@@ -614,19 +599,20 @@ print(p is q)   # True, small integers are cached by Python
 - `==` compares the **values** of two objects.
 - `is` compares the **identity** (memory location) of two objects.
 
-Two variables can hold equal values but be stored as separate objects in memory. It is best practice to use `is` only when comparing to `None`, `True`, or `False`, and use `==` for comparing values.
+Two variables can hold equal values but, in general, still be stored as separate objects in memory (this becomes clearer once you work with lists and other data structures in Unit 2). It is best practice to use `is` only when comparing to `None`, `True`, or `False`, and use `==` for comparing values.
 
 ```python
-list1 = [1, 2, 3]
-list2 = [1, 2, 3]
+name1 = "Ravi"
+name2 = "Ravi"
 
-print(list1 == list2)   # True, same values
-print(list1 is list2)   # False, different objects
+print(name1 == name2)   # True, same value
+print(name1 is name2)   # Usually True for short strings due to interning,
+                         # but == is still the correct operator to use for value comparison
 ```
 
 ### 5.6 Membership Operators
 
-Membership operators check whether a value exists within a sequence such as a string, list, or tuple.
+Membership operators check whether a value exists within a sequence. In Unit 1, the sequence type you have learned is the string; you will use `in` and `not in` with lists and other collections after they are introduced in Unit 2.
 
 | Operator | Name | Description | Example |
 |---|---|---|---|
@@ -636,11 +622,11 @@ Membership operators check whether a value exists within a sequence such as a st
 **Examples:**
 
 ```python
-fruits = ["apple", "banana", "cherry"]
+word = "apple"
 
-print("banana" in fruits)       # True
-print("mango" in fruits)        # False
-print("mango" not in fruits)    # True
+print("a" in word)        # True
+print("z" in word)        # False
+print("z" not in word)    # True
 ```
 
 ```python
@@ -650,10 +636,9 @@ print("Java" in sentence)       # False
 ```
 
 ```python
-# Common use inside a condition
 name = "Ravi"
-if "R" in name:
-    print("Name contains the letter R")
+contains_r = "R" in name
+print(contains_r)   # True
 ```
 
 **Commonly Confused: `in` vs `not in`**
@@ -691,12 +676,10 @@ print(a >> 1)   # 2  (0010)
 ```
 
 ```python
-# Checking if a number is even using bitwise AND
+# Using bitwise AND to test the last bit (1 = odd, 0 = even)
 num = 8
-if num & 1 == 0:
-    print("Even")
-else:
-    print("Odd")
+result = num & 1
+print(result)   # 0, meaning num is even
 ```
 
 Bitwise operators work on the binary form of numbers, unlike arithmetic operators, which work directly on the decimal values.
@@ -729,7 +712,7 @@ Bitwise operators work on the binary form of numbers, unlike arithmetic operator
    print(y)
    ```
 4. Identify the operator used in `count **= 2` and explain what it does.
-5. Write a program that starts with a variable `total = 0` and uses `+=` inside a loop to add numbers from 1 to 5.
+5. A variable `total` starts at `0`. Using `+=` four times (once for each number), add `5`, `10`, `15`, and `20` to `total` one line at a time, and print the final value.
 
 **Comparison Operators**
 
@@ -742,7 +725,7 @@ Bitwise operators work on the binary form of numbers, unlike arithmetic operator
    b = 8
    print(a > b)
    ```
-5. Write a program that checks whether a user-entered number is greater than, less than, or equal to 100.
+5. Write a program that takes a number as input and prints the result of comparing it with 100 using `>`, `<`, and `==` (three separate print statements).
 
 **Logical Operators**
 
@@ -755,16 +738,16 @@ Bitwise operators work on the binary form of numbers, unlike arithmetic operator
    has_license = False
    print(age >= 18 and has_license)
    ```
-5. Write a program that checks if a number is between 10 and 50 (inclusive) using logical operators.
+5. A number is stored in a variable `num = 25`. Write a single expression using logical operators that checks whether `num` is between 10 and 50 (inclusive), and print the result.
 
 **Identity Operators**
 
 1. What is the difference between `==` and `is`? Explain in one or two lines.
 2. What will the following code print?
    ```python
-   a = [1, 2]
-   b = [1, 2]
-   print(a is b)
+   x = None
+   y = None
+   print(x is y)
    ```
 3. Identify the operator that checks whether two variables refer to the same object in memory.
 4. What is the output of the following code?
@@ -777,14 +760,14 @@ Bitwise operators work on the binary form of numbers, unlike arithmetic operator
 **Membership Operators**
 
 1. What will `print("e" in "hello")` output?
-2. Find the result of `10 not in [1, 2, 3, 4, 5]`.
-3. Identify the operator used to check whether a value is absent from a list.
+2. Find the result of `"z" not in "hello world"`.
+3. Identify the operator used to check whether a value is absent from a sequence.
 4. What is the output of the following code?
    ```python
-   colors = ["red", "green", "blue"]
-   print("yellow" in colors)
+   word = "orange"
+   print("g" in word)
    ```
-5. Write a program that checks whether a user-entered fruit name exists in a given list of fruits.
+5. Write a program that takes a word as input from the user and checks whether it contains the letter `a`, printing the result.
 
 **Bitwise Operators**
 
@@ -795,7 +778,7 @@ Bitwise operators work on the binary form of numbers, unlike arithmetic operator
    ```python
    print(4 << 2)
    ```
-5. Write a program that uses the bitwise AND operator (`& 1`) to check whether a number is even or odd.
+5. Write a program that stores a number in a variable, uses the bitwise AND operator (`& 1`) to get its last bit, and prints whether the result is `0` or `1`.
 
 ---
 
