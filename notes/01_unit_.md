@@ -648,44 +648,6 @@ print(contains_r)   # True
 
 They are exact opposites of each other for the same check, and both are commonly used to validate whether user input or data exists in a collection before processing it further.
 
-### 5.7 Bitwise Operators
-
-Bitwise operators work directly on the binary (bit-level) representation of integers. They are less commonly used by beginners but are important for low-level operations, flags, and optimization.
-
-| Operator | Name | Description | Example | Result |
-|---|---|---|---|---|
-| `&` | Bitwise AND | Sets each bit to 1 if both bits are 1 | `5 & 3` | `1` |
-| `\|` | Bitwise OR | Sets each bit to 1 if at least one bit is 1 | `5 \| 3` | `7` |
-| `^` | Bitwise XOR | Sets each bit to 1 if only one of the bits is 1 | `5 ^ 3` | `6` |
-| `~` | Bitwise NOT | Inverts all the bits | `~5` | `-6` |
-| `<<` | Left Shift | Shifts bits to the left, filling with zeros | `5 << 1` | `10` |
-| `>>` | Right Shift | Shifts bits to the right | `5 >> 1` | `2` |
-
-**Examples:**
-
-```python
-a = 5    # binary: 0101
-b = 3    # binary: 0011
-
-print(a & b)    # 1  (0001)
-print(a | b)    # 7  (0111)
-print(a ^ b)    # 6  (0110)
-print(~a)       # -6
-print(a << 1)   # 10 (1010)
-print(a >> 1)   # 2  (0010)
-```
-
-```python
-# Using bitwise AND to test the last bit (1 = odd, 0 = even)
-num = 8
-result = num & 1
-print(result)   # 0, meaning num is even
-```
-
-Bitwise operators work on the binary form of numbers, unlike arithmetic operators, which work directly on the decimal values.
-
----
-
 ### Practice Questions: Python Operators
 
 **Arithmetic Operators**
@@ -769,16 +731,6 @@ Bitwise operators work on the binary form of numbers, unlike arithmetic operator
    ```
 5. Write a program that takes a word as input from the user and checks whether it contains the letter `a`, printing the result.
 
-**Bitwise Operators**
-
-1. What will `print(6 & 3)` output?
-2. Find the result of `6 | 3`.
-3. Identify the operator used to invert all bits of a number.
-4. What is the output of the following code?
-   ```python
-   print(4 << 2)
-   ```
-5. Write a program that stores a number in a variable, uses the bitwise AND operator (`& 1`) to get its last bit, and prints whether the result is `0` or `1`.
 
 ---
 
