@@ -73,4 +73,27 @@ b=6
 # print(not Mein_accha_insaan_hun)
 a=6
 b=8
-print(not a<=b)
+# print(not a<=b)
+
+#  Identity Operators
+p=9
+r=10
+s=p
+
+# print(p is not s) 
+
+username="ashutosh"
+admin_name=username
+# print(username is admin_name)
+
+a=7
+b=a
+# print(a==b)
+# print(a is b)
+# == -> value
+# is ->  value and reference
+
+# membership operator
+username=7826388238
+# print(7 in username)
+# print(8 not in username)
