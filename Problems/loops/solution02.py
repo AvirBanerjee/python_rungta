@@ -1,7 +1,7 @@
 # sum of N natural numbers
-n=5
-total=0
+n=int(input("Enter a number:")) #user defined value
+result=0
 for i in range(1,n+1):
-    total=total+i
+    print(i)
 
-print(f"the sum of {n} natural number is {total}")    
+print(f"the sum of {n} natural number is {result}")    
