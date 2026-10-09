@@ -28,10 +28,19 @@
 # print(count)
 
 count=0 #global
+
+#code
+
+
+
+count=1000#global
+
 def outer_func():
     count=0 # enclosing
+    # print(a)
     def inner_func():
         nonlocal count # local
+        a=9
         count+=1
         print(count)
     inner_func()    
@@ -40,9 +49,26 @@ def outer_func():
 
 outer_func()
 
+outer_func()
 
 
 
+ice_creame=True #global
+def check(score):
+    pizza=True #local -> for check(fucn)
+    
+    if score > 75:
+        global ice_creame
+        ice_creame=56
+        print(pizza)
+        print(ice_creame)
+    else:
+        return None
 
+check(89)
+
+# pizza
+ice_creame=False
+  
 
 
