@@ -604,6 +604,159 @@ Given a matrix of each customer's bank account balances, find the wealth of the 
 
 ---
 
+## Additional Easy Problems (Previously Missed)
+
+<details>
+<summary>101. LeetCode 7 — Reverse Integer</summary>
+Reverse the digits of a signed 32-bit integer, returning 0 if the reversed value overflows.
+
+</details>
+
+<details>
+<summary>102. LeetCode 290 — Word Pattern</summary>
+Given a pattern and a string, determine whether the string follows the same pattern using a one-to-one character-to-word mapping (dictionaries).
+
+</details>
+
+<details>
+<summary>103. LeetCode 299 — Bulls and Cows</summary>
+Given a secret number and a guess, count the number of "bulls" (correct digit, correct position) and "cows" (correct digit, wrong position).
+
+</details>
+
+<details>
+<summary>104. LeetCode 392 — Is Subsequence</summary>
+Given two strings, determine whether the first is a subsequence of the second.
+
+</details>
+
+---
+
+## Medium-Level Problems (Still Core Python — No Trees/Graphs Required)
+
+
+<details>
+<summary>105. LeetCode 3 — Longest Substring Without Repeating Characters</summary>
+Given a string, find the length of the longest substring that contains no repeating characters (sliding window with a set or dictionary).
+
+</details>
+
+<details>
+<summary>106. LeetCode 5 — Longest Palindromic Substring</summary>
+Given a string, find its longest palindromic substring.
+
+</details>
+
+<details>
+<summary>107. LeetCode 11 — Container With Most Water</summary>
+Given a list of heights, find two lines that, together with the x-axis, form a container holding the most water (two-pointer technique).
+
+</details>
+
+<details>
+<summary>108. LeetCode 15 — 3Sum</summary>
+Given a list of integers, find all unique triplets that sum to zero.
+
+</details>
+
+<details>
+<summary>109. LeetCode 22 — Generate Parentheses</summary>
+Given n pairs of parentheses, generate all combinations of well-formed parentheses strings (recursion/backtracking).
+
+</details>
+
+<details>
+<summary>110. LeetCode 46 — Permutations</summary>
+Given a list of distinct integers, return all possible permutations (recursion/backtracking).
+
+</details>
+
+<details>
+<summary>111. LeetCode 49 — Group Anagrams</summary>
+Given a list of strings, group the anagrams together using a dictionary.
+
+</details>
+
+<details>
+<summary>112. LeetCode 53 — Maximum Subarray</summary>
+Given a list of integers, find the contiguous subarray with the largest sum (Kadane's Algorithm).
+
+</details>
+
+<details>
+<summary>113. LeetCode 54 — Spiral Matrix</summary>
+Given a matrix (nested list), return all its elements in spiral order.
+
+</details>
+
+<details>
+<summary>114. LeetCode 56 — Merge Intervals</summary>
+Given a list of intervals, merge all overlapping intervals.
+
+</details>
+
+<details>
+<summary>115. LeetCode 73 — Set Matrix Zeroes</summary>
+Given a matrix, if an element is 0, set its entire row and column to 0, ideally in place.
+
+</details>
+
+<details>
+<summary>116. LeetCode 78 — Subsets</summary>
+Given a list of distinct integers, return all possible subsets (the power set), using recursion/backtracking.
+
+</details>
+
+<details>
+<summary>117. LeetCode 128 — Longest Consecutive Sequence</summary>
+Given an unsorted list of integers, find the length of the longest consecutive elements sequence, using a set for O(n) time.
+
+</details>
+
+<details>
+<summary>118. LeetCode 152 — Maximum Product Subarray</summary>
+Given a list of integers, find the contiguous subarray with the largest product.
+
+</details>
+
+<details>
+<summary>119. LeetCode 189 — Rotate Array</summary>
+Given a list, rotate it to the right by k steps, ideally in place.
+
+</details>
+
+<details>
+<summary>120. LeetCode 198 — House Robber</summary>
+Given a list of amounts in houses arranged in a line, find the maximum amount you can rob without robbing two adjacent houses (basic dynamic programming using a list/loop).
+
+</details>
+
+<details>
+<summary>121. LeetCode 238 — Product of Array Except Self</summary>
+Given a list, return a new list where each element is the product of all other elements, without using division.
+
+</details>
+
+<details>
+<summary>122. LeetCode 287 — Find the Duplicate Number</summary>
+Given a list of n+1 integers where each is between 1 and n, find the one duplicate number without modifying the list and using O(1) extra space.
+
+</details>
+
+<details>
+<summary>123. LeetCode 347 — Top K Frequent Elements</summary>
+Given a list of integers, return the k most frequent elements, using a dictionary for counting.
+
+</details>
+
+<details>
+<summary>124. LeetCode 560 — Subarray Sum Equals K</summary>
+Given a list of integers and an integer k, find the total number of continuous subarrays whose sum equals k, using a dictionary of prefix sums.
+
+</details>
+
+---
+
 Sources consulted to verify problem numbers:
 - [LeetCode — Two Sum](https://leetcode.com/problems/two-sum/)
 - [LeetCode — Palindrome Number](https://leetcode.com/problems/palindrome-number/)
@@ -613,3 +766,7 @@ Sources consulted to verify problem numbers:
 - [walkccc.me — LeetCode 242 Valid Anagram](https://walkccc.me/LeetCode/problems/242/)
 - [walkccc.me — LeetCode 26 Remove Duplicates from Sorted Array](https://walkccc.me/LeetCode/problems/26/)
 - [walkccc.me — LeetCode 9 Palindrome Number](https://walkccc.me/LeetCode/problems/9/)
+- [LeetCode 7 — Reverse Integer (Medium)](https://medium.com/@pvsrrkishore/leetcode-7-reverse-integer-3bc621b1f0d8)
+- [algo.monster — LeetCode 53 Maximum Subarray](https://algo.monster/liteproblems/53)
+- [neetcode.io — LeetCode 3 Longest Substring Without Repeating Characters](https://neetcode.io/solutions/longest-substring-without-repeating-characters)
+- [algo.monster — LeetCode 238 Product of Array Except Self](https://algo.monster/liteproblems/238)
