@@ -1,4 +1,4 @@
-def remove_duplicate(lst)->list:
+def remove_duplicate(lst):
     # new_lst=set(lst) -> first solution
     # empty_lst=[]
     # for val in lst:
