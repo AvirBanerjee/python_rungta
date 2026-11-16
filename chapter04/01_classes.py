@@ -1,15 +1,17 @@
-class Car:
-    def __init__(self,name,model,year,company):
-        user_name=name
-        user_model=model
-        user_year=year
-        user_comapany=company     
+class Car: #class
+    pass
 
+car_01=Car() # object creation
+car_01.name="verna" #adding attribute
+car_01.company="Hyundai"
 
-akshat=Car("verna","BS-6",2026,"Hyundai")
-print(akshat)
+car_02=Car()
+car_02.name="City"
+car_02.company="Honda"
+car_02.color="black"
 
-
-
-# print(Car.name)
-# print(Car.model)
+print(car_01.name)
+print(car_01.company)
+print(car_02.name)
+print(car_02.company)
+print(car_02.color)
